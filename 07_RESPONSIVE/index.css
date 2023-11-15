@@ -1,0 +1,70 @@
+html{
+    font-size: 16px;
+}
+.box{
+    margin-bottom: 100px;
+}
+.px{
+    width: 50px;
+    height: 500px;
+    background-color: palegoldenrod;
+}
+
+
+
+.pct-parent{
+    width: 500px;
+    height: 500px;
+    background-color: plum;
+}
+.pct-child{
+    width: 50%;
+    height: 50%;
+    background-color: palegreen;
+}
+
+
+
+.em{
+    font-size: 2em;
+}
+.rem{
+    font-size: 2rem;
+}
+
+
+
+
+
+.vw{
+    /*20vw : viewport width 20%*/
+    width: 20vw;
+    height: 20vw;
+    background-color: coral;
+}
+.vw-font{
+    font-size: 8vw;
+}
+
+.vh{
+    /*20vh : viewport height 20%*/
+    width: 20vh;
+    height: 20vh;
+    background-color: skyblue;
+}
+
+/*
+body{
+    height: 100vh;
+} 
+ */
+
+ :root{
+    --color-primary : #845e2c;
+    --height-header: 100px;
+ }
+ .my-div{
+    background-color: var(--color-primary);
+    width : 200px;
+    height : var(--height-header);
+} 
