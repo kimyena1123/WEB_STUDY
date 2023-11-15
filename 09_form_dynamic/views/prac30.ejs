@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습30</title>
+
+    <!-- JQEURY CDN -->
+    <script
+        src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous">
+    </script>
+
+    <!-- AXIOS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <h1><%= title %></h1>
+    
+    <form name="login">
+        <label for="id">아이디</label>
+        <input type="text" id="id" name="id" required>
+
+        <label for="pw">비밀번호</label>
+        <input type="password" id="pw" name="pw" required>
+
+        <button type="button" onclick="axiosPost()">로그인</button>
+    </form>
+    <br>
+    
+    <div class="result"></div>
+
+    <div class="login_out"></div>
+
+    
+    <script>
+        const resultBox = document.querySelector('.result');
+        const resultOutBox = document.querySelector(".login_out");
+
+        function axiosPost(){
+            console.log("#######click axios Post#######");
+
+            const form = document.forms['login'];
+
+            console.log('form.id의 true 확인 >> ', form.id.checkValidity());
+            console.log('form.pw의 true 확인 >> ', form.pw.checkValidity());
+
+            const data = {
+                id: form.id.value,
+                pw: form.pw.value,
+            };
+
+            if(form.id.checkValidity() === true && form.pw.checkValidity() === true){
+                axios({
+                    method: 'POST',
+                    url: '/axios3',
+                    data: data, // app.post로 보낸다. app.js에서 req.body로 받는다.
+                }).then(function(response){
+                    console.log("prac30.ejs에서 response: ",response);
+                    console.log("prac30.ejs에서 response.data: ", response.data);
+                    console.log("prac30.ejs에서 response.data.msg: ", response.data.msg);
+                    console.log("prac30.ejs에서 response.data.isLogin", response.data.isLogin);
+
+                    if(response.data.isLogin == true){
+                        resultBox.textContent = `${data.id}님 ${response.data.msg}`;
+                        resultBox.style.color = 'blue';
+                    }else{
+                        console.log("else문에서 response >> ", response);
+                        console.log("else문에서 response.data >> ", response.data);
+                        console.log('else문에서 response.data.msg >> ', response.data.msg);
+                        resultBox.textContent = response.data.msg;
+                        resultBox.style.color = 'red';
+                    }
+                })
+            }else{
+                resultBox.textContent = '입력을 마쳐주세요';
+                resultBox.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
