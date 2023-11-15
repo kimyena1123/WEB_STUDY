@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            width: 100px;
+            height: 50px;
+            border: 2px solid red;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">JS DOM 이벤트</h1>
+    <h2>이벤트 리스너 등록 방법</h2>
+
+    <!-- 1) 인라인 방식-->
+    <button onclick="showAlert();">버튼1</button>
+
+    <!-- 속성(프로퍼티) 방식-->
+    <button id="btn2">버튼2</button>
+
+    <!-- addEventListenr() 메소드-->
+    <button id="btn3">버튼3</button>
+
+    <br>
+    <br>
+    <br>
+
+
+    <!-- 이벤트 등록 연습-->
+    <!-- <span id="span1" onmouseover="colorchange();">SPAN1</span>
+    <span id="span2">SPAN2</span>
+    <span id="span3">SPAN3</span> -->
+
+    <span id="span1" ondblclick="colorchange();">SPAN1</span>
+    <span id="span2">SPAN2</span>
+    <span id="span3">SPAN3</span>
+
+    <script src="./event.js"></script>
+</body>
+</html>

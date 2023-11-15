@@ -1,0 +1,14 @@
+console.log("Quiz-Q1. :  1번");
+console.log("Quiz-Q2. :  4번");
+console.log("Quiz-Q3. :  1번");
+console.log("Quiz-Q4. :  1번, 4번");
+console.log("Quiz-Q5. :  3번");
+console.log("Quiz-Q6. :  2,3,4번");
+console.log("Quiz-Q7. :  2번");
+console.log("Quiz-Q8. :  1번");
+console.log("Quiz-Q9. :  2번");
+console.log("Quiz-Q10. :  1번");
+console.log("Quiz-Q11. :  3번");
+console.log("Quiz-Q12. :  2,3,5,7,9,11,12번");
+console.log("Quiz-Q13. :  1번");
+console.log("Quiz-Q14. :  3번");

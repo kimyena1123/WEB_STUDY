@@ -1,0 +1,81 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 14. 방명록 만들기</title>
+  </head>
+  <body>
+    <h1>여기는 방명록!!</h1>
+    <form>
+      <label for="writer">작성자</label>
+      <input type="text" id="writer" autocomplete="off">
+      <br>
+      <br>
+
+      <label for="content">내용</label>
+      <input type="text" id="content" style="width: 500px" autocomplete="off">
+      <br>
+      <br>
+
+      <button type="button" onclick="writeNote();">등록</button>
+    </form>
+
+    <br>
+    <br>
+
+    <table id="table" border="1" cellpadding="10" cellspacing="1">
+      <tbody>
+        <tr>
+            <th>작성자</th>
+            <th>내용</th>
+            <th>작성일</th>
+        </tr>
+      <!-- 
+        코드 추가 예시
+        <tr>
+          <td>홍길동</td>
+          <td>하이</td>
+          <td>2022-10-05 12:34</td>
+        </tr>
+      -->
+    </tbody></table>
+
+    <script>
+      // TODO: practice14_설명.png 이미지의 조건을 만족하는 js 코드 작성
+      // writeNote() 함수를 미리 정의해두었습니다.
+
+      // [등록] 버튼 클릭시 writeNote() 함수가 실행되도록 인라인 방식으로 미리 설정해 두었습니다.
+      function writeNote(){
+        const writer = document.querySelector('#writer');
+        const content = document.querySelector('#content');
+        const table = document.querySelector('#table');
+
+        let time = new Date();
+
+        let year = time.getFullYear();
+        let month = time.getMonth();
+        let day = time.getDate();
+
+        let hour = time.getHours();
+        let minute = time.getMinutes(); 
+        
+        //표 생성하기
+        const tr = document.createElement('tr'); //tr태그 생성
+        const td1 = document.createElement('td'); //td태그 생성
+        const td2 = document.createElement('td');
+        const td3 = document.createElement('td');
+
+        td1.innerText = writer.value;
+        td2.innerText = content.value;
+        td3.innerText = `${year}-${month + 1}-${day} ${hour} : ${minute}`;
+
+        table.append(tr); //table의 자식으로 tr을 연결
+        tr.append(td1, td2, td3); //tr의 자식으로 td1,td2,td3가 연결됨
+
+        //초기화
+        writer.value = '';
+        content.value = '';
+      }
+    </script>
+</body>
+</html>

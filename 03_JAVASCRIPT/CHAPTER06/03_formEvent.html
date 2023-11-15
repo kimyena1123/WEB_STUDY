@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Event</title>
+</head>
+<body>
+    <h1>Todo 리스트</h1>
+
+    <button id="clickme">click me</button>
+    
+    <form id="todo-form">
+        <input type="text" name="todo" placeholder="todo">
+        <button type="submit">Add</button>
+    </form>
+
+    <ul class="todos"></ul>
+
+    <!-- =================================================== -->
+
+    <form id="form">
+        <label for="email">이메일</label>
+        <input id="email" name="email" type="email" placeholder="이메일">
+        <button type="submit">제출</button>
+    </form>
+
+    <ul class="mail_list"></ul>
+
+    <hr>
+
+    <!-- =================================================== -->
+
+    <h1>변경 이벤트(input)</h1>
+
+    <input type="text" id="change_input">
+    <br><br>
+    <div class="intro"></div>
+
+    <textarea id="textarea"></textarea>
+    <p class="text_area"></p>
+    <br>
+    <hr>
+
+
+
+    <h1>키보드 이벤트</h1>
+    <input type="text" id="key_input">
+
+
+    <script src="./03_formEvent.js"></script>
+</body>
+</html>

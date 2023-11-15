@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 사용해보기</title>
+
+    <!-- JS 사용방식
+        1. html 파일 안에 script 태그 내부에 작성
+            1-1. head 태그 내부에 작성
+            1-2. body 태그 내부에 작성
+
+        2. JS 파일 생성헤서 연결하여 사용
+            2-1. head 태그 > script 태그 src 속성에 js 파일 경로
+            2-2. body 태그 > script 태그 src 속성에 js 파일 경로
+
+
+            1-1곽 2-1 방법
+                - 웹페이지 불러오기 전에 실행
+                - 자바스크립트 길이가 너무 길다면? 사용자는 한 화면만 보이게 되고 > 이게 오류처럼 보이게 된다. 
+        
+    -->
+
+    <!--
+        <script>
+            console.log("HI-HEAD");
+        <script>
+    -->
+
+    <!--
+        <script src = './index.js'></script>
+    -->
+</head>
+<body>
+    <h1> Javascript를 배워보자</h1>
+
+    <!--
+    <script>
+        console.log("HI-BODY");
+    </script>
+    -->
+    <script src = "./index.js"></script>
+    <!--
+        1-2와 2-2 방법
+            - 웹페이지 불러온 후 실행(html 파일을 위에서부터 한줄씩 읽기 때문)
+            - 무조건 좋은가? script를 불러오기 전에 사용자가 동작을 한다면 오류가 난 것처럼 보인다. 
+    -->
+</body>
+</html>

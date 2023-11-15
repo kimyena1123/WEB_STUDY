@@ -1,0 +1,113 @@
+body{
+    background-color: #eee;
+}
+h1{
+    text-align: center;
+}
+.container{
+    border: 1px solid black;
+    width: 1000px;
+    height: 400px;
+    background-color: #333;
+    margin: 0 auto;
+
+
+    display: flex; /* div는 block 요소이기 때문에 원래 세로로 나타나! */
+
+    /* flex-direction: 정렬 방향(주축의 방향을 결정해준다) 즉, 배치 방향 설정
+        - row(default) : 수평정렬(좌->우 방향으로)
+        - row-reverse : 수평정렬(우->좌 방향으로)
+        - column : 수직정렬(위->아래 방향으로)
+        - column-reverse: 수직정렬(아래->위 방향으로)
+
+        ex) flex-direction: row;
+            flex-direction: row-reverse;
+            flex-direction: column;
+            flex-direction: column-reverse;
+    */
+   flex-direction: column;
+
+   /* justify-content: 주축 item을 어떻게 배치할 것인가? (메인충 방향 정렬, 즉 메인축 방향으로 아이템들을 정렬하는 속성)
+        - flex-direction: row or row-reverse => 수평정렬일 때, 주축(메인축) row이다.
+        - flex-direction: column or column-reverse => 수직정렬일때, 주축(메인축) column이다. 
+
+    [사용 가능한 속성]
+        1. flex-start(default): 아이템들을 start 지점을 기준으로 나열해준다.
+        2. flex-end: 아이템들을 end 지점을 기준으로 나열해준다.
+        3. space-between: 처음과 마지막 아이템을 양 끝에 붙이고, 나머지 영역 공평하게 나눠준다.
+        4. space-around: 아이템들이 모든 여백을 공평하게 나눈다.
+        5. space-evenly: start부터 첫 아이템의 간격, 아이템까리의 간격, 마지막 아이템부터 end까지의 간격이 일정하다.
+        6. flex-center: 가운데.
+
+        ex) justify-content: flex-start;
+            justify-contetn: flex-end;
+            justify-content: flex-center;
+            jusfity-content: space-between;
+            justify-content: space-around;
+            justify-content: space-evenly;
+   */
+   justify-content: flex-start;
+
+   /* align-item: 교차축에 대해 item을 어떻게 배치할 것인가(수직(교차)축 방향 정렬)
+        - flex-direction: row일 때, 교차축은 column이다.
+        - flex-direction: column일 때, 교차축은 row이다.
+
+    [사용가능한 속성]
+        1. stretch(default): container(부모요소에 flex가 성언된 container를 말함)의 교차축을 채우기 위해 늘림
+            - 현재 .item 요소에 Width, height 값이 있어서 늘어나지 않는다.
+        2. flex-start: 교차축의 시작점으로 정렬
+        3. flex-end: 교차축의 끝점으로 정렬
+        4. center: 교차축의 가운데 정렬
+        5. baseline: item을 텍스의 baseline을 기준으로 정렬한다.
+   */
+   align-items: flex-start;
+
+   /* flex-wrap: 줄바꿈(개행) 처리
+               : 컨테이너가 더이상 아이템들을 한 줄에 담을 여유공간이 없을 때 아이템 줄바꿈을 어떻게 할 지 결정하는 속성
+               : 즉, 컨테이너가 한 줄에 아이템들을 다 수용하지 못할 때, 줄바꿈 여부 설정 기능
+    [사용 가능한 속성]
+        1. wrap : 줄바꿈 0
+        2. wrap-reverse : 줄바꿈 하는데 역순 배치(줄바꿈 + 역순 배치)
+
+    ex) flex-wrap: wrap;
+        flex-wrap: wrap-reverse;
+        
+    */
+    flex-wrap: wrap;
+
+    /* align-content: 여러 행 정렬
+                    : flex-wrap이 설정된 상태에서, 아이템들의 행이 2줄 이상 되었을 때 수직축(교차축) 방향을 결정하는 속성이다. 
+        
+        ex) align-content: stretch;
+            align-content: flex-start;
+            align-content: flex-end;
+            align-content: center;
+            align-content: space-between;
+            align-content: space-around;
+            align-content: space-evenly;
+    */
+    align-content: space-evenly;
+}
+.container > .item{
+    width: 100px;
+    height: 100px;
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 100px;
+}
+.item1{
+    background-color: red;
+}
+.item2{
+    background: orange;
+}
+.item3{
+    background-color: yellow;
+}
+.item4{
+    background-color: green;
+}
+.item5{
+    background-color: blue;
+}

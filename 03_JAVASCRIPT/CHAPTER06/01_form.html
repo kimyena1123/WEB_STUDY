@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+    <!-- 
+        폼
+        1. 폼에 입력한 정보를 서버로 보내서 서버측에서 데이터를 활용
+        2. 사용자의 입력을 받아서 프론트 측에서 활용
+     -->
+
+     <form>
+        <!-- input 
+                value 속성 : input의 기본 값 설정 -->
+            <input type="text" value="default value">
+            <input type="password">><br>
+            type=number :    <input type="number"><br>
+            type=range :     <input type="range"><br>
+            type=color :     <input type="color"><br>
+            type=email :     <input type="email"><br>
+            type=file :      <input type="file"><br>
+            type=date :      <input type="date"><br>
+            type=tel :       <input type="tel" value="전화번호"><br>
+
+            <!-- type : checkbox => 중복 선택 가능  -->
+            <input type="checkbox" checked>사과
+            <input type="checkbox">바나나
+            <input type="checkbox">오렌지
+            <br>
+
+            <!-- type : radio => 하나만 선택 가능
+            (같은 name 속성을 가진 라디오 버튼 중 하나만 선택) -->
+            <input type="radio" name="fruit" id="apple">사과
+            <input type="radio" name="fruit" id="orange" checked>오렌지
+            <input type="radio" name="fruit" id="banana">바나나
+            <br>
+
+            <!-- textarea
+                    cols : 가로길이
+                    rows : 기본으로 보여질 줄 수 -->
+            <textarea cols="50" rows="10"></textarea>
+            <br>
+
+            <!-- select : 드롭 다운 리스트를 갖는 콤보 박스 -->
+            <select name="" id="">
+                <option value="1">one</option>
+                <option value="2" selected>two</option>
+                <option value="3">three</option>
+                <br><br><br>
+            </select>
+
+            <!-- button type : submit
+                    : 폼 태그 안에 있을 때 기본값 -> 폼 "제출"을 의미 -->
+            <button type="submit">제출</button>
+     </form>
+
+     <!-- button : button
+            : 폼 태그 외부에서 버튼 타입 기본값 -> 단순 "버튼 클릭"을 의미 -->
+    <button type="button">button</button>
+    <br><br>
+
+    <hr>
+
+    <!-- label 태그
+        : 캡션을 의미함. 웹 접근성에 도움을 줄 수 있음. 폼을 더 편리하게 사용할 수 있음 -->
+    <h2>label 태그</h2>
+
+    <form>
+        <label for="user_name">user_name</label>
+        <input id="user_name" type="text"><br>
+
+        <label for="pw1">password</label>
+        <input id="pw1" type="password"><br>
+
+        <!-- checkbox, radio -->
+        <input type="radio" name="gender" id="mail">
+        <lebel for="mail">남성</lebel>
+        <input type="radio" name="gender" id="femail">
+        <label for="femail">여성</label><br>
+
+        <label for="email">email</label>
+        <input id="email" type="email" placeholder="000@naver.com"><br>
+
+        <label for="password">password</label>
+        <input id="password" type="password" placeholder="비밀번호">
+    </form>
+</body>
+</html>
