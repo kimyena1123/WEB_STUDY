@@ -37,3 +37,29 @@ exports.addVisitor = (req, res) => {
         })
     })
 }
+
+exports.getVisitor = (req, res) => {
+    console.log(req.query); 
+    console.log(req.query.id);
+
+    Visitor.getVisitor(req.query.id, (result) => {
+        res.send(result);
+    })
+}
+
+exports.patchVisitor = (req, res) => {
+    console.log(req.body);
+
+    Visitor.patchVisitor(req.body, (result) => {
+        res.send('수정 성공!');
+    })
+}
+
+exports.deleteVisitor = (req, res) => {
+    console.log(req.body);
+    console.log(req.body.id);
+
+    Visitor.deleteVisitor(req.body.id, (result) => {
+        res.send("삭제 성공!");
+    })
+}

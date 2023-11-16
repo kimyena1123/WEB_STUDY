@@ -126,6 +126,135 @@
         } //function end
 
 
+        //테이블 내 [수정] 버튼을 클릭시
+        // -form input에 각각 이름과 방명록 값을 넣기
+        //-[변경], [취소] 버튼으로 대체 -> innerHTML
+        async function editVisitor(id){
+            const form = document.forms['visitor-form'];
+            console.log(form);
+            console.log(id);
+
+            const html = `
+            <button type="button" onclick="editDo(${id});">변경</button>
+            <button type="button" onclick="editCancel();">취소</button>
+            `;
+            buttonGroup.innerHTML = html;
+
+            //-form input에 각각 이름과 방명록 값을 넣기
+        
+            //axios응답 결과를 result 변수에 담고자 한다.
+            //왜냐하면 result변수에는 조회한 결과가 있다.
+            //(result 변수에 한 명에 대한 정보가 담아야 하니까)
+            //이 과정이 동기처리가 이루어져야 한다.
+            //axios 처리를 기다렸다가 result 라는 변수에 담아야 한다(동기처리)
+            //async/await
+            //await를 만나서 프로미스가 처리될 때까지 기다려주게 한다.
+            let result = await axios({
+                method: 'GET',
+                url: `/visitor/get?id=${id}`,
+            }).then((res) => {
+                console.log("!&!&!&!&!&");
+                console.log("ejs에서의 RES: ", res);
+                console.log("1: ", res.data);
+
+                return res.data;
+            })
+
+            console.log('2: 방문자 하나 조회 결과: ' + result);
+            //result : {id: 19, name: '123', comment: '123'}
+
+            //폼의 Input에 "방문자 하나 조회 결과" 값을 각각 대입
+            form.name.value = result.name;
+            form.comment.value = result.comment;
+        }
+
+        function editDo(id){
+            const form = document.forms['visitor-form'];
+
+            axios({
+                method: 'PATCH',
+                url: '/visitor/edit',
+                data: {
+                    id: id,
+                    name: form.name.value,
+                    comment: form.comment.value,
+                }
+            }).then((res) => {
+                console.log(res.data);
+
+                return res.data;
+            }).then((data) => {
+                alert(data);
+
+                const children = document.querySelector(`#tr_${id}`).children; 
+                console.log("children >>",children);
+
+                children[1].textContent = form.name.value; //value 값 넣어준다.
+                children[2].textContent = form.comment.value; //comment value 값 넣어준다.
+        
+                //[취소] 버튼 클릭시와 동일한 동작
+                //-input 초기화
+                editCancel();
+
+                const html = `
+                     <button type="button" onclick = "createVisitor();">등록</button>
+                `;
+                buttonGroup.innerHTML = html;
+            })
+        }
+
+        //[취소] 버튼 클릭시 
+        //-input 초기화
+        //-[등록] 버튼 보이기
+        function editCancel(){
+            console.log('deit cancel');
+        
+            //(1) input 초기화
+            clearInput();
+        
+            //(2) 등록 버튼 보이기
+            const html = `<button type="button" onclick = "createVisitor();">등록</button>`
+            buttonGroup.innerHTML = html;
+        }
+
+
+        //[삭제] 버튼 클릭시
+        //-테이블에서 해당 행 삭제
+        function deleteVisitor(obj, id){
+            console.log("click delete btn");
+
+            console.log(obj); //삭제 버튼 태그
+            console.log(id);
+
+            let comfirm_alert = confirm("삭제하시겠습니까?");
+
+            if(!comfirm_alert){
+                return;
+            }
+
+            axios({
+                method: 'DELETE',
+                url: '/visitor/delete',
+                data:{
+                    id: id,
+                }
+            }).then((res) => {
+                console.log(res.data);
+                
+                return res.data;
+            }).then(data => {
+                
+                //obj: 삭제 버튼(자기자신)
+                obj.parentElement.parentElement.remove();
+            })
+        }
+
+        function clearInput(){
+            const form = document.forms['visitor-form'];
+            form.name.value = '';
+            form.comment.value = '';
+        }
+        
     </script>
 </body>
 </html>

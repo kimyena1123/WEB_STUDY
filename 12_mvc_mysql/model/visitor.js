@@ -39,3 +39,41 @@ exports.addVisitor = (data, callback) => {
             callback(rows.insertId);
     })
 }
+
+exports.getVisitor = (id, callback) => {
+    conn.query(`SELECT * FROM visitor WHERE id=${id}`, (err, rows) => {
+        if(err){
+            throw err;
+        }
+        console.log("model에서의 id 가져오기 (배열?)>> ", rows);
+
+        callback(rows[0]);
+    })
+}
+
+exports.patchVisitor = (data, callback) => {
+    conn.query(
+        `UPDATE visitor SET name='${data.name}', comment='${data.comment}' WHERE id=${data.id}`,
+        (err, rows) => {
+            if(err){
+                throw err;
+            }
+            console.log('Visitor.js: ', rows);
+            callback(true); //true: 수정 성공을 의미
+        }
+    )
+}
+
+exports.deleteVisitor = (id, callback) => {
+
+    //id : 사용자가 삭제 버튼을 클릭한 그 행의 id 값
+    conn.query(
+        `DELETE FROM visitor WHERE id = ${id}`,
+        (err, rows) => {
+            if(err){
+                throw err;
+            }
+            callback(true);
+        }
+    )
+}

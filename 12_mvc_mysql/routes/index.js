@@ -11,6 +11,9 @@ router.get('/', controller.main);
 //GET / visitor -> localhost: PORT/visitor
 router.get('/visitor', controller.getVisitors);
 
+//GET/ visitor/get => localhost:PORT/visitor/get
+router.get('/visitor/get', controller.getVisitor);
+
 
 
 //POST/ visitor/write => localhost:PORT/visitor/write
@@ -18,5 +21,11 @@ router.get('/visitor', controller.getVisitors);
 //post로 send 한다.
 //visitor/write는 axios의 url이다. 
 router.post('/visitor/write', controller.addVisitor);
+
+//PATCH /visitor/edit => localhost: PORT/visitor/edit
+router.patch('/visitor/edit', controller.patchVisitor);
+
+//DELETE /visitor/delete
+router.delete('/visitor/delete', controller.deleteVisitor);
 
 module.exports = router;
